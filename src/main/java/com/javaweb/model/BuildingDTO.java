@@ -3,7 +3,6 @@ package com.javaweb.model;
 import java.util.List;
 
 public class BuildingDTO {
-  
    private String name;
    private Integer numberOfBasement;
    private String address;
