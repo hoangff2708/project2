@@ -1,5 +1,4 @@
 package com.javaweb.service.impl;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,6 @@ public class BuildingServiceImpl implements BuildingService{
     @Autowired
     private BuildingSearchBuilderConverter buildingSearchBuilderConverter;
 	@Override
-	
 	public List<BuildingDTO> findAll(Map<String, Object> params, List<String> typeCode) {
 		BuildingSearchBuilder buildingSearchBuilder = buildingSearchBuilderConverter.toBuildingSearchBuilder(params, typeCode);
 		List<BuildingEntity> buildingEntities = buildingRepository.findAll(buildingSearchBuilder);
@@ -35,5 +33,4 @@ public class BuildingServiceImpl implements BuildingService{
 		}
 		return result;
 	}
-
 }

@@ -1,32 +1,55 @@
 package com.javaweb.repository.entity;
 
-public class BuildingRentTypeEntity {
-    private Long id;
-    private Long buildingId;
-    private Long rentTypeId;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-    // Getters and Setters
+@Entity
+@Table(name = "buildingrenttype")
+public class BuildingRentTypeEntity {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "buildingid")
+	private BuildingEntity building;
+	
+	@ManyToOne
+	@JoinColumn(name = "renttypeid")
+	private BuildingEntity renttype;
+
+    // Getters and Setters\
+	
+	
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public BuildingEntity getBuilding() {
+		return building;
+	}
+
+	public void setBuilding(BuildingEntity building) {
+		this.building = building;
+	}
+
+	public BuildingEntity getRenttype() {
+		return renttype;
+	}
+
+	public void setRenttype(BuildingEntity renttype) {
+		this.renttype = renttype;
+	}
+
+	public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getBuildingId() {
-        return buildingId;
-    }
-
-    public void setBuildingId(Long buildingId) {
-        this.buildingId = buildingId;
-    }
-
-    public Long getRentTypeId() {
-        return rentTypeId;
-    }
-
-    public void setRentTypeId(Long rentTypeId) {
-        this.rentTypeId = rentTypeId;
-    }
 }
