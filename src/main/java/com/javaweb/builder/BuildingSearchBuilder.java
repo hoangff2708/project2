@@ -11,7 +11,7 @@ public class BuildingSearchBuilder {
     private Long numberOfBasement;
     private List<String> typeCode;
     private String managerName;
-    private String managerPhoneName;
+    private String managerPhoneNumber;
     private Long areaFrom;
     private Long areaTo;
     private Long priceFrom;
@@ -26,7 +26,7 @@ public class BuildingSearchBuilder {
         this.numberOfBasement = builder.numberOfBasement;
         this.typeCode = builder.typeCode;
         this.managerName = builder.managerName;
-        this.managerPhoneName = builder.managerPhoneName;
+        this.managerPhoneNumber = builder.managerPhoneNumber;
         this.areaFrom = builder.areaFrom;
         this.areaTo = builder.areaTo;
         this.priceFrom = builder.priceFrom;
@@ -57,8 +57,8 @@ public class BuildingSearchBuilder {
 	public String getManagerName() {
 		return managerName;
 	}
-	public String getManagerPhoneName() {
-		return managerPhoneName;
+	public String getManagerPhoneNumber() {
+		return managerPhoneNumber;
 	}
 	public Long getAreaFrom() {
 		return areaFrom;
@@ -85,7 +85,7 @@ public class BuildingSearchBuilder {
         private Long numberOfBasement;
         private List<String> typeCode;
         private String managerName;
-        private String managerPhoneName;
+        private String managerPhoneNumber;
         private Long areaFrom;
         private Long areaTo;
         private Long priceFrom;
@@ -124,8 +124,8 @@ public class BuildingSearchBuilder {
         	this.managerName = managerName;
         	return this;
         }
-        public Builder setManagerPhoneName(String managerPhoneName) {
-        	this.managerPhoneName = managerPhoneName;
+        public Builder setManagerPhoneNumber(String managerPhoneName) {
+        	this.managerPhoneNumber = managerPhoneName;
         	return this;
         }
         public Builder setAreaFrom(Long areaFrom) {

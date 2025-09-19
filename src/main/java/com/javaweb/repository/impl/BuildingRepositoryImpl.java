@@ -41,7 +41,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
     			String fieldName = item.getName();
     			if(fieldName.equals("staffId") || fieldName.equals("typeCode") ||
     			  fieldName.startsWith("area") ||
-    			  fieldName.startsWith("rentPrice")) {
+    			  fieldName.startsWith("price")) {
     				continue;
     			}
     			 Object value = item.get(buildingSearchBuilder);
@@ -77,6 +77,16 @@ public class BuildingRepositoryImpl implements BuildingRepository {
         }
             where.append(" ) ");
         }
+        
+        Long rentPriceFrom = buildingSearchBuilder.getPriceFrom();
+        Long rentPriceTo = buildingSearchBuilder.getPriceTo();
+        if (rentPriceFrom != null) {
+            where.append(" AND rentprice >= " + rentPriceFrom);
+        }
+        if (rentPriceTo != null) {
+            where.append(" AND rentprice <= " + rentPriceTo);
+        }
+        
          //java7 
 			/*
 			 * if (typeCode != null && typeCode.size() != 0) {
