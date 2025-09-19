@@ -8,11 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.javaweb.builder.BuildingSearchBuilder;
-import com.javaweb.repository.BuildingRepository;
 import com.javaweb.repository.custom.BuildingRepositoryCustom;
 import com.javaweb.repository.entity.BuildingEntity;
 
@@ -77,6 +75,14 @@ public class BuildingRepositoryImpl implements BuildingRepositoryCustom{
         }
             where.append(" ) ");
         }
+        Long rentPriceFrom = buildingSearchBuilder.getRentPriceFrom();
+        Long rentPriceTo = buildingSearchBuilder.getRentPriceTo();
+        if (rentPriceFrom != null) {
+            where.append(" AND rentprice >= " + rentPriceFrom);
+        }
+        if (rentPriceTo != null) {
+            where.append(" AND rentprice <= " + rentPriceTo);
+        }
          //java7 
 			/*
 			 * if (typeCode != null && typeCode.size() != 0) {
@@ -99,7 +105,7 @@ public class BuildingRepositoryImpl implements BuildingRepositoryCustom{
 
    // @Override
     public List<BuildingEntity> findAll(BuildingSearchBuilder buildingSearchBuilder) {
-        StringBuilder sql = new StringBuilder("SELECT * FROM building b ");        
+        StringBuilder sql = new StringBuilder("SELECT b.* FROM building b ");        
         StringBuilder where = new StringBuilder(" WHERE 1 = 1 ");
         joinTable(buildingSearchBuilder, sql);
         queryNomal(buildingSearchBuilder, where);
